@@ -22,7 +22,7 @@
   --tabh:58px;
 }
 *{box-sizing:border-box;-webkit-tap-highlight-color:transparent;}
-html,body{margin:0;padding:0;background:var(--ink);}
+html,body{margin:0;padding:0;background:var(--ink);width:100%;overflow-x:hidden;}
 body{font-family:-apple-system,BlinkMacSystemFont,"SF Pro Text",system-ui,"Segoe UI",Roboto,sans-serif;
   color:var(--bone);font-size:15px;line-height:1.45;-webkit-font-smoothing:antialiased;
   -webkit-user-select:none;user-select:none;overscroll-behavior-y:none;}
@@ -50,19 +50,21 @@ h1{font-size:30px;font-weight:800;letter-spacing:-.025em;line-height:1;margin:4p
 
 .q{font-size:15.5px;font-weight:600;margin:0 0 3px;}
 .qs{font-size:13px;color:var(--muted);margin:0 0 14px;}
-.scale{display:grid;grid-template-columns:repeat(11,1fr);gap:4px;}
-.scale button{aspect-ratio:1/1.18;min-height:44px;border-radius:7px;border:1px solid var(--line);
-  background:var(--ink3);color:var(--muted);font-size:16px;font-weight:700;padding:0;
+.scale{display:flex;flex-wrap:wrap;gap:6px;justify-content:center;}
+.scale button{flex:0 0 calc((100% - 30px)/6);height:52px;min-width:0;
+  border-radius:8px;border:1px solid var(--line);
+  background:var(--ink3);color:var(--muted);font-size:17px;font-weight:700;padding:0;
   font-variant-numeric:tabular-nums;transition:transform .08s ease;}
 .scale button:active{transform:scale(.9);}
-.scale button[aria-pressed="true"]{color:var(--ink);border-color:transparent;font-size:18px;}
-.ends{display:flex;justify-content:space-between;margin-top:7px;font-size:10.5px;font-weight:600;letter-spacing:.11em;text-transform:uppercase;color:var(--muted2);}
+.scale button[aria-pressed="true"]{color:var(--ink);border-color:transparent;font-size:20px;}
+.ends{text-align:center;margin-top:9px;font-size:10.5px;font-weight:600;letter-spacing:.11em;text-transform:uppercase;color:var(--muted2);}
 
-.strip{display:flex;gap:5px;align-items:flex-end;height:66px;margin-top:13px;}
-.wk{display:flex;gap:1.5px;align-items:flex-end;flex:1;height:100%;}
+.strip{display:flex;gap:3px;align-items:flex-end;height:66px;margin-top:13px;}
+.wk{display:flex;gap:1px;align-items:flex-end;flex:1;min-width:0;height:100%;}
 .bar{flex:1;min-width:0;height:2px;border:0;padding:0;border-radius:2px 2px 0 0;background:var(--ink3);transition:height .25s ease;}
 .bar.cur{outline:1.5px solid var(--bone);outline-offset:1px;}
-.axis{display:flex;gap:5px;margin-top:7px;}
+.axis{display:flex;gap:3px;margin-top:7px;}
+.axis span{min-width:0;}
 .axis span{flex:1;text-align:center;font-size:9.5px;font-weight:600;color:var(--muted2);}
 .delta{font-size:13px;font-weight:700;font-variant-numeric:tabular-nums;}
 
@@ -180,7 +182,7 @@ textarea{width:100%;background:var(--ink);border:1px solid var(--line);color:var
       <p class="q">How stiff was the first 30 seconds of walking?</p>
       <p class="qs">This is the scoreboard. Not how the run felt.</p>
       <div class="scale" id="scale"></div>
-      <div class="ends"><span>None</span><span>Worst</span></div>
+      <div class="ends">0 = none &nbsp;&middot;&nbsp; 10 = worst</div>
     </div>
 
     <div class="card">
